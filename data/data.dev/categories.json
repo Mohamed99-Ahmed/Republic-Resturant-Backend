@@ -1,0 +1,435 @@
+[ {
+  "categoryName": "offers",
+  "products": [
+    {
+      "name": "El Nagda",
+      "id": 0,
+      "price": 299,
+      "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/offers/elngdaa.png?updatedAt=1740589460139",
+      "description": "٢ ساندويتش (بيف أو تشيكن) بصوص التكساس وسموكد بيف وعليهم شيدر بايتس واونيون رينج مع صوص جبنة  و كاتشب مع البطاطس و٢ ماكس كولا 🔥🔥"
+    },
+    {
+      "name": "El Nagda",
+      "id": 1,
+      "price": 222,
+      "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/offers/elngdaa.png?updatedAt=1740589460139",
+      "description": ""
+    }
+  ]
+},
+  {
+    "categoryName": "beef",
+    "products": [
+      {
+        "name": "world ware beef",
+        "id": 0,
+        "price": {
+          "single": 160,
+          "double": 200
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/beef/WorldWareBeef.jpeg?updatedAt=1740069635829",
+        "description": "برجر مشوي علي الفحم محشي جبنه خطيره مع  المودزريلا و بيف بيكن بالطريقه السويسريه  مع صوص  الرنش  الكريمي و البطاطس المتبله "
+      },
+      {
+        "name": "mushroom ranch beef",
+        "id": 1,
+        "price": {
+          "single": 145,
+          "double": 185
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/beef/WorldWareBeef.jpeg?updatedAt=1740069635829",
+        "description": ""
+      },
+      {
+        "name": "Barbecue Ring Beef",
+        "id": 2,
+        "price": {
+          "single": 135,
+          "double": 175
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/beef/BeefRingBeef.jpeg?updatedAt=1740069628050",
+        "description": "برجر  مشوي علي الفحم محشي جبنه خطيره مع حلقات البصل المقرمشه و صوص الباربيكيو  و صوص التيستي  و البطاطس المتبله"
+      },
+      {
+        "name": "Juicy Lucy Beef",
+        "id": 3,
+        "price": {
+          "single": 155,
+          "double": 195
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/beef/JuicyLucyBeef.jpeg?updatedAt=1740069628074",
+        "description": "برجر مشوي علي الفحم محشي جبنه خطيره عليه موتزريلا ستيكس وصوص الشيدرالكريمي وصوص التيستي و الكاتشب و البطاطس المتبلة"
+      },
+      {
+        "name": "Republic Beef",
+        "id": 4,
+        "price": {
+          "single": 135,
+          "double": 175
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/beef/RebublicBeef.jpeg?updatedAt=1740069627966",
+        "description": "برجر محشي علي الفحم جبنه خطيره  وصوص الشيدر الكريمي وصوص التيستي و الكاتشب و البطاطس المتبلة"
+      },
+      {
+        "name": "Original Beef",
+        "id": 5,
+        "price": {
+          "single": 130,
+          "double": 170
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/beef/RebublicBeef.jpeg?updatedAt=1740069627966",
+        "description": "برجر محشي علي الفحم جبنه خطيره  وصوص الشيدر الكريمي وصوص التيستي و الكاتشب و البطاطس المتبلة"
+      }
+    ]
+  },
+  {
+    "categoryName": "CHICKEN SANDWICHES",
+    "products": [
+      {
+        "name": "World War Chicken",
+        "id": 0,
+        "price": {
+          "single": 160,
+          "double": 200
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/Chicken/worldWarChicken.jpeg?updatedAt=1740069637441",
+        "description": "برجر دجاج محشي جبنه خطيره  عليه موتزريلا ستيكس و التركي المدخن  وصوص الشيدرالكريمي وصوص التيستي و الكاتشب و البطاطس المتبلة"
+      },
+      {
+        "name": "Mushroom Ranch Chicken",
+        "id": 1,
+        "price": {
+          "single": 145,
+          "double": 185
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/Chicken/MushrommRanchChicken.jpeg?updatedAt=1740069637423",
+        "description": "برجر دجاج مقرمش محشي جبنه خطيره مع  المشروم و بالطريقه السويسريه  مع صوص  الرنش  الكريمي و البطاطس المتبله "
+      },
+      {
+        "name": "Barbecue Ring Chicken",
+        "id": 2,
+        "price": {
+          "single": 135,
+          "double": 175
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/Chicken/BarbecueRingChicken.jpeg?updatedAt=1740069637293",
+        "description": "برجر  مشوي علي الفحم محشي جبنه خطيره مع حلقات البصل المقرمشه و صوص الباربيكيو  و صوص التيستي  و البطاطس المتبله"
+      },
+      {
+        "name": "Juicy Lucy Chicken",
+        "id": 3,
+        "price": {
+          "single": 155,
+          "double": 195
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/Chicken/JucyLucyChicken.jpeg?updatedAt=1740069637194",
+        "description": "برجر دجاج محشي جبنه خطيره  عليه موتزريلا ستيكس وصوص الشيدرالكريمي وصوص التيستي و الكاتشب و البطاطس المتبلة"
+      },
+      {
+        "name": "Smoked House Chicken",
+        "id": 4,
+        "price": {
+          "single": 140,
+          "double": 180
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/Chicken/SmokendHouseChicken.jpeg?updatedAt=1740069637292",
+        "description": "برجر دجاج محشي جبنه خطيره مع التركي المدخن اللذيذ وصوص الشيدرالكريمي وصوص التيستي و الكاتشب والبطاطس المتبلة"
+      },
+      {
+        "name": "Original Chicken",
+        "id": 5,
+        "price": {
+          "single": 130,
+          "double": 170
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/Chicken/OriginalChicken.jpeg?updatedAt=1740069637033",
+        "description": "برجر دجاج مقرمش محشي جبنه خطيره مع صوص البيج تيستي و الكاتشب و البطاطس المتبله "
+      }
+    ]
+  },
+  {
+    "categoryName": "MUSTTRY SANDWICHES",
+    "products": [
+      {
+        "name": "Inferno",
+        "id": 0,
+        "price": {
+          "single": 155,
+          "double": 195
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/musttry/Inferno.jpeg?updatedAt=1740069641867",
+        "description": "برجر  مشوي علي الفحم  محشي جبنه خطيره  مع قطعتين شيدر هالبينو و صوص البافلو مع البيف المدخن  و البطاطس المتبله "
+      },
+      {
+        "name": "Sweet Dynamite",
+        "id": 1,
+        "price": {
+          "single": 150,
+          "double": 190
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/musttry/SweetDynamite.jpeg?updatedAt=1740069642267",
+        "description": "برجر دجاج مقرمش محشي جبنه خطيره عليه بيف مدخن  و كولسلو  مع  صوص هاريسه كوكتيل و البطاطس المتبله "
+      },
+      {
+        "name": "Lazy daizy",
+        "id": 2,
+        "price": {
+          "single": 150,
+          "double": 190
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/musttry/LazyDaizy.jpeg?updatedAt=1740069642012",
+        "description": "برجر  مشوي علي الفحم محشي جبنه خطيره مع حلقات البصل المقرمشه و صوص الباربيكيو  و صوص التيستي  و البطاطس المتبله"
+      },
+      {
+        "name": "Project-x",
+        "id": 3,
+        "price": {
+          "single": 150,
+          "double": 190
+        },
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/musttry/Project-x.jpeg?updatedAt=1740069642788",
+        "description": "برجر دجاج مقرمش محشي جبنه خطيره عليه بيف مدخن  مع حلقات البصل المقرمشه مع  صوص الهوت ماسترد السبايسي  و البطاطس المتبله "
+      }
+    ]
+  },
+  {
+    "categoryName": "KIDS MEAL",
+    "products": [
+      {
+        "name": "Junior 5 Pieces Of Nuggets",
+        "id": 0,
+        "price": 80,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/kids/Junior5Nuggets.jpeg?updatedAt=1740069640557",
+        "description": "٥ قطع ناجتس -البطاطس المتبله-عصير- لعبة من اختيارك"
+      },
+      {
+        "name": "Junior Single Chicken",
+        "id": 1,
+        "price": 90,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/kids/JuniorSingleBeef.jpeg?updatedAt=1740069640859",
+        "description": "سينجل تشيكن برجر -البطاطس المتبله-عصير- لعبة من اختيارك"
+      },
+      {
+        "name": "Junior Double Beef",
+        "id": 2,
+        "price": 110,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/kids/JuniorDoubleBeef.jpeg?updatedAt=1740069640605",
+        "description": "دابل بيف برجر -البطاطس المتبله-عصير- لعبة من اختيارك"
+      },
+      {
+        "name": "Junior Single Beef",
+        "id": 3,
+        "price": 90,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/kids/JuniorSingleBeef.jpeg?updatedAt=1740069640859",
+        "description": "سينجل بيف برجر -البطاطس المتبله-عصير- لعبة من اختيارك"
+      }
+    ]
+  },
+  {
+    "categoryName": "APPETIZERS",
+    "products": [
+      {
+        "name": "Cheddar Jalapeno Bites",
+        "id": 0,
+        "price": 50,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/appitizers/Cheddar.jpeg?updatedAt=1740069627754",
+        "description": "قطع الشيدر  هالبينو  الحارة  تقدم مع صوص الثاوزند ايلاند"
+      },
+      {
+        "name": "Nuggets",
+        "id": 1,
+        "price": 45,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/appitizers/Nuggets.jpeg?updatedAt=1740069627704",
+        "description": "قطع الناجتس الذهبيه تقدم مع صوص الجبنه"
+      },
+      {
+        "name": "Chicken Strips",
+        "id": 2,
+        "price": 55,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/appitizers/ChickenStrips.jpeg?updatedAt=1740069627780",
+        "description": "ستريبس الدجاج المقرمش تقدم مع صوص الهوت ماسترد"
+      },
+      {
+        "name": "Mozzarella Sticks",
+        "id": 3,
+        "price": 45,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/appitizers/MozzarellaSticks.jpeg?updatedAt=1740069627726",
+        "description": "أصابع الموتزايلا تقدم مع صوص الثاوزند ايلاند"
+      },
+      {
+        "name": "Coleslaw",
+        "id": 4,
+        "price": 30,
+        "description": "كولسلو لذيذ"
+      }
+    ]
+  },
+  {
+    "categoryName": "FRIES",
+    "products": [
+      {
+        "name": "Classic friess",
+        "id": 0,
+        "price": 40,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/fries/ClassicFries.jpeg?updatedAt=1740069638871",
+        "description": ""
+      },
+      {
+        "name": "Cheese Fries",
+        "id": 1,
+        "price": 50,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/fries/CheeseFries.jpeg?updatedAt=1740069636624",
+        "description": ""
+      },
+      {
+        "name": "Chicken chips",
+        "id": 2,
+        "price": 65,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/fries/ChickenChips.jpeg?updatedAt=1740069637426",
+        "description": "ستريبس الدجاج المقرمش مع صوص الدينامايت- صوص الشيدر  الكريمي "
+      },
+      {
+        "name": "Chili Cheese",
+        "id": 3,
+        "price": 75,
+        "imageCover": "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/fries/ChiliCheese.jpeg?updatedAt=1740069637378",
+        "description": "تشيلي بيف- هالبينو  وصوص الشيدر  الكريمي "
+      },
+      {
+        "name": "Coleslaw",
+        "id": 4,
+        "price": 30,
+        "description": "كولسلو لذيذ"
+      }
+    ]
+  },
+  {
+    "categoryName": "DESSERTS",
+    "products": [
+      {
+        "name": "Pancake 'Nutella'",
+        "id": 0,
+        "price": 45,
+        "description": ""
+      },
+      {
+        "name": "Pancake 'White chocolate'",
+        "id": 1,
+        "price": 45,
+        "description": ""
+      },
+      {
+        "name": "Pancake 'Strawberry'",
+        "id": 2,
+        "price": 45,
+        "description": ""
+      },
+      {
+        "name": "Pancake 'Caramel'",
+        "id": 3,
+        "price": 45,
+        "description": ""
+      },
+      {
+        "name": "Pancake 'Lotus'",
+        "id": 3,
+        "price": 45,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "categoryName": "EXTRS",
+    "products": [
+      {
+        "name": "spicy",
+        "id": 0,
+        "price": 10,
+        "description": ""
+      },
+      {
+        "name": "Hotdog",
+        "id": 1,
+        "price": 20,
+        "description": ""
+      },
+      {
+        "name": "Ketchup",
+        "id": 2,
+        "price": 10,
+        "description": ""
+      },
+      {
+        "name": "buffalo",
+        "id": 3,
+        "price": 10,
+        "description": ""
+      },
+      {
+        "name": "Thousand island",
+        "id": 3,
+        "price": 15,
+        "description": ""
+      },
+      {
+        "name": "Ranch",
+        "id": 4,
+        "price": 15,
+        "description": ""
+      },
+      {
+        "name": "Dynamite",
+        "id": 5,
+        "price": 10,
+        "description": ""
+      },
+      {
+        "name": "Hot Mustard",
+        "id": 6,
+        "price": 10,
+        "description": ""
+      },
+      {
+        "name": "Cheese",
+        "id": 7,
+        "price": 15,
+        "description": ""
+      },
+      {
+        "name": "Smoked Beef",
+        "id": 8,
+        "price": 20,
+        "description": ""
+      },
+      {
+        "name": "Bacon",
+        "id": 9,
+        "price": 20,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "categoryName": "Drinks",
+    "products": [
+      {
+        "name": "Water",
+        "id": 0,
+        "price": 10,
+        "description": ""
+      },
+      {
+        "name": "Juice",
+        "id": 1,
+        "price": 15,
+        "description": ""
+      },
+      {
+        "name": "Softdrink",
+        "id": 2,
+        "price": 25,
+        "description": ""
+      }
+    ]
+  }
+]
