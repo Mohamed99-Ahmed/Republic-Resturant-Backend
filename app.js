@@ -18,8 +18,18 @@ app.use((req, res, next) => {
   req.requestTime = new Date().toISOString(); // Store request time as a string
   next();
 });
+// Middleware
+
 //  Routes
 app.use("/categories", prductsRoutes);
+
+// if route not found upper go to this route
+app.use("*", (req, res) => {
+  res.status(404).json({
+    status: 404,
+    message: "Page not found",
+  });
+});
 
 //listen to server
 module.exports = app;
