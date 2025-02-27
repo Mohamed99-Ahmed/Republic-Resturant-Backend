@@ -2,23 +2,20 @@
 const express = require("express");
 const app = express();
 const prductsRoutes = require("./routes/categoryRoute");
+const cors = require("cors");
 
-// Adding the data that in conguration to proccess.env
-// MiddleWares
 // Middle wares
-// this is
 let date;
 app.use(express.json());
-app.get((req, res, next) => {
-  res.send("Hello from the server app!");
-  next();
-});
+
+// Enable CORS for all routes
+app.use(cors());
 // Add CreatedAt middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString(); // Store request time as a string
   next();
 });
-// Middleware
+
 
 //  Routes
 app.use("/categories", prductsRoutes);
@@ -29,6 +26,7 @@ app.use("*", (req, res) => {
     status: 404,
     message: "Page not found",
   });
+  next()
 });
 
 //listen to server
