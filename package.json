@@ -4,8 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js",
-    "vercel-build": "vercel build"
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
