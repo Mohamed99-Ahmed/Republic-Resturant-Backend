@@ -8,8 +8,11 @@ const cors = require("cors");
 let date;
 app.use(express.json());
 
-// Enable CORS for all routes
+// Enable CORS for all routes get and post api
 app.use(cors());
+
+// Enable CORS for all routes put and delete api
+app.options('*', cors());
 // Add CreatedAt middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString(); // Store request time as a string
