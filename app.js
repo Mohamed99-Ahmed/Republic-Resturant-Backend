@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const prductsRoutes = require("./routes/categoryRoute");
 const cors = require("cors");
+// حول Express إلى دالة Serverless حتى يعمل على Vercel
 
 // Middle wares
 let date;

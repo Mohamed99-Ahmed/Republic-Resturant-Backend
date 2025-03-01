@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const app = require("./app.js");
+const app = require("./app.js").default;
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
@@ -10,17 +10,11 @@ const DB = process.env.DATABASE.replace(
 );
 console.log("Database URL:", DB);
 
-
 // conncet to database
 mongoose
   .connect(DB)
   .then(() => console.log("Database connected"))
   .catch((err) => console.log(err));
 
-
-//listen to server
-const server = app.listen(port, () => {
-  console.log(`heoo from port ${port}`);
-});
 // Export the server for Vercel
-module.exports = server;
+module.exports = app;
