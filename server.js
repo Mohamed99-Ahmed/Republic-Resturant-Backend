@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const app = require("./app.js").default;
+const app = require("./app.js");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./config.env" });
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 5000;
 const DB = process.env.DATABASE.replace(
   "<db_password>",
   process.env.DATABASE_PASSWORD
@@ -17,4 +17,6 @@ mongoose
   .catch((err) => console.log(err));
 
 // Export the server for Vercel
-module.exports = app;
+app.listen(port, () => console.log(`Server running on port ${port}`));
+
+
