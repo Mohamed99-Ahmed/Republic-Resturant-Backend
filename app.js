@@ -14,6 +14,10 @@ app.use(cors());
 
 // Enable CORS for all routes put and delete api
 app.options('*', cors());
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
+
 // Add CreatedAt middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString(); // Store request time as a string
