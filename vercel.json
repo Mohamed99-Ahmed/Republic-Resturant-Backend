@@ -2,8 +2,5 @@
   "version": 2,
   "routes": [
     { "src": "/(.*)", "dest": "/" }
-  ],
-  "functions": {
-    "server.js": { "runtime": "nodejs22.x" }
-  }
+  ]
 }
