@@ -1,0 +1,47 @@
+[
+  {
+    "name": "1 حدائق القبة",
+    "description": "شارع مصر والسودان",
+    "link": "https://maps.app.goo.gl/Cv5Y81SfP5dJu6cU9"
+  },
+  {
+    "name": "2 حدائق القبة",
+    "description": "١٥١ مصر والسودان، حدائق القبة، امام صيدلية العزبي",
+    "link": "https://maps.app.goo.gl/ZeDXqLLFLBRQZ5q18"
+  },
+  {
+    "name": "مدينة نصر",
+    "description": "مكرم عبيد، المنطقة السادسة، مدينة نصر",
+    "link": "https://maps.app.goo.gl/Y87SHNpMRtJzH4EQ6"
+  },
+  {
+    "name": "مصر الجديدة, هيليوبلس",
+    "description": "حديقة تيفولي دوم، شارع عمر بن الخطاب، الماظة، مصر الجديدة",
+    "link": "https://maps.app.goo.gl/ZueF83e1uWTBk24b9"
+  },
+  {
+    "name": "الهرم",
+    "description": "108 الهرم، أول الهرم، الطالبية",
+    "link": "https://maps.app.goo.gl/djvsGFEaiP1gqmpL7"
+  },
+  {
+    "name": "المعادي",
+    "description": "146 شارع النصر، البساتين الشرقية، البساتين، محافظة القاهرة",
+    "link": "https://maps.app.goo.gl/etf3woyajsQJ8Fov6"
+  },
+  {
+    "name": "جاردينا",
+    "description": "مدينة نصر، محافظة القاهرة",
+    "link": "https://maps.app.goo.gl/XniamJmveApfhpKT7"
+  },
+  {
+    "name": "التجمع الاول",
+    "description": "امتداد محور السادات",
+    "link": "https://maps.app.goo.gl/2bEGqhDCLdsAozNE7"
+  },
+  {
+    "name": "العبور",
+    "description": "مدينة العبور, محور العبور",
+    "link": "https://maps.app.goo.gl/omiEgTeBNqJp6fUG6"
+  }
+]

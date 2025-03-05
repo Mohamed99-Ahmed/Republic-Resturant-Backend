@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const prductsRoutes = require("./routes/categoryRoute");
+const storesRoutes = require("./routes/storesRoute");
 const cors = require("cors");
 const ApiError = require("./Utils/apiError");
 const globalErrorHandler = require('./controllers/errorController')
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 
 //  Routes
 app.use("/categories", prductsRoutes);
+app.use("/stores", storesRoutes);
 
 // if route not found upper go to this route and this error will go to the next middleware of error
 app.use("*", (req, res,next) => {
