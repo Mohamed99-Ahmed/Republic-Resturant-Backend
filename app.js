@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const prductsRoutes = require("./routes/categoryRoute");
 const cors = require("cors");
+const ApiError = require("./Utils/apiError");
+const globalErrorHandler = require('./controllers/errorController')
 // حول Express إلى دالة Serverless حتى يعمل على Vercel
 
 // Middle wares
@@ -28,14 +30,11 @@ app.use((req, res, next) => {
 //  Routes
 app.use("/categories", prductsRoutes);
 
-// if route not found upper go to this route
-app.use("*", (req, res) => {
-  res.status(404).json({
-    status: 404,
-    message: "Page not found",
-  });
-  next()
+// if route not found upper go to this route and this error will go to the next middleware of error
+app.use("*", (req, res,next) => {
+  next( new ApiError("Route not found", 404));
 });
-
+// erorr handler middleware that will use for every erorr in any middleware
+app.use(globalErrorHandler)
 //listen to server
 module.exports = app;
