@@ -3,9 +3,10 @@ const express = require("express");
 const app = express();
 const prductsRoutes = require("./routes/categoryRoute");
 const storesRoutes = require("./routes/storesRoute");
+const usersRoute = require("./routes/usersRoute");
 const cors = require("cors");
 const ApiError = require("./Utils/apiError");
-const globalErrorHandler = require('./controllers/errorController')
+const globalErrorHandler = require("./controllers/errorController");
 // حول Express إلى دالة Serverless حتى يعمل على Vercel
 
 // Middle wares
@@ -16,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 // Enable CORS for all routes put and delete api
-app.options('*', cors());
+app.options("*", cors());
 app.get("/", (req, res) => {
   res.send("Server is running!");
 });
@@ -27,16 +28,16 @@ app.use((req, res, next) => {
   next();
 });
 
-
 //  Routes
 app.use("/categories", prductsRoutes);
 app.use("/stores", storesRoutes);
+app.use("/users", usersRoute);
 
 // if route not found upper go to this route and this error will go to the next middleware of error
-app.use("*", (req, res,next) => {
-  next( new ApiError("Route not found", 404));
+app.use("*", (req, res, next) => {
+  next(new ApiError("Route not found", 404));
 });
 // erorr handler middleware that will use for every erorr in any middleware
-app.use(globalErrorHandler)
+app.use(globalErrorHandler);
 //listen to server
 module.exports = app;
