@@ -31,12 +31,24 @@ exports.getspeceficUser =catchAsync( async (req, res,next) => {
       });
     
 });
-// updateS pecefic user
-exports.updateSpeceficUser =catchAsync( async (req, res,next) => {
-  
+// updateMe user   (req.user come from middelware of protect function)
+exports.updateMe =catchAsync( async (req, res,next) => {
+    // 1) Create error if user POSTs password data
+    if (req.body.password || req.body.passwordConfirm) {
+      return next(
+        new ApiError(
+          'This route is not for password updates. Please use /updateMyPassword.',
+          400
+        )
+      );
+    }
+    // find user and update
   const updatedUser = await allUsers.findByIdAndUpdate(
-    req.params.idUser,
-    req.body,
+    req.user.id,
+    {
+      "name" : req.body.name,
+      "email" : req.body.email
+    },
     {
         // thsi will be validate with my model
       new: true,
@@ -44,12 +56,12 @@ exports.updateSpeceficUser =catchAsync( async (req, res,next) => {
     }
   );
   if(!updatedUser){
-    return next(new ApiError("User id is not updated", 404));
+    return next(new ApiError("User is not updated", 404));
   }
     res.status(200).json({
       status: httpStataus.SUCCESS,
       data: {
-        store: updatedUser,
+        user: updatedUser,
       },
     });
 });

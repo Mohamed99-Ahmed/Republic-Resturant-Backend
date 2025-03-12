@@ -3,9 +3,27 @@ const router = express.Router(); // router instead of app
 
 const userController = require("../controllers/usersControllser");
 const authController = require("../controllers/authController");
+
+// signup
+router.route("/signup").post(authController.signUp);
+// login
+router.route("/login").post(authController.login);
+// forgetPassword
+router.route("/forgetPassword").post(authController.forgetPassword);
+// reset password
+router.route("/resetPassword/:token").patch(authController.resetPassword);
+// udpate my password
+router
+  .route("/updateMyPassword")
+  .patch(authController.protect, authController.updateMyPassword);
+
+
+  
 // getAllusers
-router.route("/").get(authController.protect, userController.getallUsers);
-//  get specifc user - delete user
+router
+  .route("/")
+  .get(authController.protect, authController.restrictTo("admin"), userController.getallUsers);
+// getSpecefig user and delet user
 router
   .route("/:idUser")
   .get(userController.getspeceficUser)
@@ -14,10 +32,9 @@ router
     authController.restrictTo("admin"),
     userController.deleteSpecUser
   );
-// signup
-router.route("/signup").post(authController.signUp);
-// login
-router.route("/login").post(authController.login);
-// router.route("/login/:idUser").post(userController.getspeceficUser);
+// update me (only name or email)
+router
+  .route("/updateMe")
+  .patch(authController.protect, userController.updateMe);
 
 module.exports = router;
