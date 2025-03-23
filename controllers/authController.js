@@ -18,16 +18,16 @@ const signToken = (id, name, role) => {
 const createSendToken = (user, statusCode, res) => {
   // signToken
   const token = signToken(user.id, user.name, user.role);
-  
+
   //  cokkie that will send to browser that recieve it not token so more secure
   const cookieOptions = {
     expiresIn: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true
-  }
-  if(process.env.NODE_ENV = "production") cookieOptions.secure = true; // make secure cookie(token)
-  res.cookie("jwt", token , cookieOptions)
+    httpOnly: true,
+  };
+  if ((process.env.NODE_ENV = "production")) cookieOptions.secure = true; // make secure cookie(token)
+  res.cookie("jwt", token, cookieOptions);
 
   // make invisible password so it will be more secure
   res.password = undefined;
@@ -58,19 +58,26 @@ exports.signUp = catchAsync(async (req, res, next) => {
 });
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-  // 1) check if you exist email and passoword
+
+  // 1) check if email and password exist
   if (!email || !password) {
     return next(new ApiError("you should write email and password", 400));
   }
-  // 2) check if email and passowrd are right
-  // make password are visible to compare
+
+  // 2) check if user exists & password is correct
   const user = await allUsers.findOne({ email }).select("+password");
-  const comparedPass = await user.correctPassword(password, user.password);
-  if (!user || !comparedPass) {
-    return next(new ApiError("email or password is flase", 401));
+
+  if (!user) {
+    return next(new ApiError("email or password is incorrect", 401));
   }
-  //create send token with nice response
-    createSendToken(user,200, res)
+
+  const comparedPass = await user.correctPassword(password, user.password);
+  if (!comparedPass) {
+    return next(new ApiError("email or password is incorrect", 401));
+  }
+
+  // 3) if everything ok, send token
+  createSendToken(user, 200, res);
 });
 // protect Route
 exports.protect = catchAsync(async (req, res, next) => {
