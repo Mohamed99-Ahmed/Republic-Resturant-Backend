@@ -5,8 +5,9 @@ const prductsRoutes = require("./routes/categoryRoute");
 const storesRoutes = require("./routes/storesRoute");
 const usersRoute = require("./routes/usersRoute");
 const productsRoute = require("./routes/productsRoute");
+const cartRoute = require("./routes/cartsRoute");
 const cors = require("cors");
-const ApiError = require("./Utils/apiError");
+const ApiError = require("./utils/apiError");
 const globalErrorHandler = require("./controllers/errorController");
 // security package
 const rateLimit = require("express-rate-limit");
@@ -60,6 +61,7 @@ app.use("/categories", prductsRoutes);
 app.use("/stores", storesRoutes);
 app.use("/users", usersRoute);
 app.use("/products", productsRoute);
+app.use("/cart", cartRoute);
 
 // if route not found upper go to this route and this error will go to the next middleware of error
 app.use("*", (req, res, next) => {

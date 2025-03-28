@@ -1,14 +1,28 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router(); // router instead of app
+const authController = require("../controllers/authController");
+const storesController = require("../controllers/storesControllser");
 
-const { getAllStores,getspeceficStore,updateSpeceficStore,createStore,deleteSpeceficStore} = require('../controllers/storesControllser');
-
-router.route('/')
-        .get(getAllStores)
-        .post(createStore);
-router.route('/:idStore')
-        .get(getspeceficStore)
-        .patch(updateSpeceficStore)
-        .delete(deleteSpeceficStore)
+router
+  .route("/")
+  .get(storesController.getAllStores)
+  .post(
+    authController.protect,
+    authController.restrictTo("admin"),
+    storesController.createStore
+  );
+router
+  .route("/:id")
+  .get(storesController.getspeceficStore)
+  .patch(
+    authController.protect,
+    authController.restrictTo("admin"),
+    storesController.updateSpeceficStore
+  )
+  .delete(
+    authController.protect,
+    authController.restrictTo("admin"),
+    storesController.deleteSpeceficStore
+  );
 
 module.exports = router;

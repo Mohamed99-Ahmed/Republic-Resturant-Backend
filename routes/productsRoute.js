@@ -11,10 +11,10 @@ router
     authController.protect,
     authController.restrictTo("admin"),
     productController.createProduct
-    );
+  );
 // getSpecefic product and delet product and update
 router
-  .route("/:idProduct")
+  .route("/:id")
   .get(productController.getspeceficProduct)
   .patch(
     authController.protect,

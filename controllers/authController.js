@@ -1,10 +1,10 @@
-const catchAsync = require("../Utils/catchAsync");
-const allUsers = require("../models/usersModel");
-const httpStataus = require("../Utils/httpStatusText");
+const catchAsync = require("../utils/catchAsync");
+const { User } = require("../models/usersModel");
+const httpStataus = require("../utils/httpStatusText");
 const { promisify } = require("util");
 const jwt = require("jsonwebtoken");
-const ApiError = require("../Utils/apiError");
-const sendEmail = require("../Utils/email");
+const ApiError = require("../utils/apiError");
+const sendEmail = require("../utils/email");
 const crypto = require("crypto");
 // create Send Token
 const signToken = (id, name, role) => {
@@ -44,7 +44,7 @@ const createSendToken = (user, statusCode, res) => {
 // create new user
 exports.signUp = catchAsync(async (req, res, next) => {
   // we take all of that because of security not req.body but with detaails
-  const newUser = await allUsers.create({
+  const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
@@ -65,7 +65,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 2) check if user exists & password is correct
-  const user = await allUsers.findOne({ email }).select("+password");
+  const user = await User.findOne({ email }).select("+password");
 
   if (!user) {
     return next(new ApiError("email or password is incorrect", 401));
@@ -103,7 +103,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   // check if userr still exist in database or no
 
-  const currentUser = await allUsers.findById(decode.id);
+  const currentUser = await User.findById(decode.id);
 
   if (!currentUser) {
     return next(new ApiError("the user belong to this token is exist", 401));
@@ -134,7 +134,7 @@ exports.restrictTo = (...roles) => {
 // foregetPasssword function
 exports.forgetPassword = catchAsync(async (req, res, next) => {
   // get user base on email
-  const user = await allUsers.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email });
   if (!user) {
     return next(new ApiError("there is no user with this email address", 404));
   }
@@ -179,7 +179,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     .update(req.params.token)
     .digest("hex"); // hash resettoken to compare with hashed token in database
 
-  const user = await allUsers.findOne({
+  const user = await User.findOne({
     passwordResetToken: hashToken,
     passwordResetExpires: { $gt: Date.now() },
   });
@@ -204,7 +204,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 // udpdate the password (should user log in because this function work after protect function and take token from it)
 exports.updateMyPassword = catchAsync(async (req, res, next) => {
   // find user and select password to appear to compare with current password that user write
-  const user = await allUsers.findById(req.user.id).select("+password");
+  const user = await User.findById(req.user.id).select("+password");
   console.log("user", user);
   // compare current password that type with user with in database
   if (!(await user.correctPassword(req.body.currentPassword, user.password))) {

@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-// function unchaughtError like print something not declared =
-process.on("uncaughtException", (err) => {
-  console.error("UNCAUGHT EXCEPTION! �� Shutting down...");
-  console.error(err.name, err.message);
-  process.exit(1);
-});
+// function unchaughtError like print something not declared 
+// process.on("uncaughtException", (err) => {
+//   console.error("UNCAUGHT EXCEPTION! �� Shutting down...");
+//   console.error(err.name, err.message);
+//   process.exit(1);
+// });
 
 const app = require("./app.js");
 const dotenv = require("dotenv");

@@ -31,7 +31,7 @@ const sotoreSchema = new mongoose.Schema({
 
 
 // Make a Model for all products
-const Stores = mongoose.model("store", sotoreSchema);
+const Store = mongoose.model("store", sotoreSchema);
 
 //   exprorts module
-module.exports = Stores ;
+module.exports = Store ;
