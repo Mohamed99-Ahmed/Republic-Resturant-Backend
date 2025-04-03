@@ -12,16 +12,20 @@ router.route("/login").post(authController.login);
 router.route("/forgetPassword").post(authController.forgetPassword);
 // reset password
 router.route("/resetPassword/:token").patch(authController.resetPassword);
-// udpate my password
+
+
+
+
+//**  protect all these route by authController.protect that middle ware is use first */
+router.use(authController.protect)
 router
   .route("/updateMyPassword")
-  .patch(authController.protect, authController.updateMyPassword);
+  .patch( authController.updateMyPassword);
 
 // getAllusers
 router
   .route("/")
   .get(
-    authController.protect,
     authController.restrictTo("admin"),
     userController.getallUsers
   );
@@ -30,14 +34,13 @@ router
   .route("/:id")
   .get(userController.getspeceficUser)
   .delete(
-    authController.protect,
     authController.restrictTo("admin"),
     userController.deleteSpecUser
   );
 // update me (only name or email)
 router
   .route("/updateMe")
-  .patch(authController.protect, userController.updateMe);
+  .patch( userController.updateMe);
 
 // make nested route of user
 // router.use('/:tourUser/cart', cart);

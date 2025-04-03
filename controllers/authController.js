@@ -146,7 +146,9 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   const resetURL = `${req.protocol}://${req.get(
     "host"
   )}/users/resetPassword/${resetToken}`; // this resetURL that will send to  user to  can access that in frontned
-  const message = `Forgot your password? Submit a PATCH request with your new password and passwordConfirm to: ${resetURL}.\nIf you didn't forget your password, please ignore this email!`;
+  const message = `Forgot your password? reset your password with this token and write your new password and passwordConfirm :  
+      ${resetToken}
+  `;
 
   try {
     await sendEmail({

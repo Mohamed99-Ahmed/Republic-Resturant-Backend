@@ -72,7 +72,7 @@ exports.removeFromCart = catchAsync(async (req, res, next) => {
     (item) => item.product._id.toString() !== productId.toString()
   );
   await cart.save();
-
+  // getCart()
   res.status(200).json({
     status: httpStatus.SUCCESS,
     data: {
