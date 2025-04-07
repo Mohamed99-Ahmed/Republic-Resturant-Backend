@@ -1,11 +1,14 @@
 /* eslint-disable no-undef */
 const express = require("express");
 const app = express();
+// routes
 const prductsRoutes = require("./routes/categoryRoute");
 const storesRoutes = require("./routes/storesRoute");
 const usersRoute = require("./routes/usersRoute");
 const productsRoute = require("./routes/productsRoute");
 const cartRoute = require("./routes/cartsRoute");
+const orderRoute = require("./routes/orderRoute");
+// cors and Error
 const cors = require("cors");
 const ApiError = require("./utils/apiError");
 const globalErrorHandler = require("./controllers/errorController");
@@ -62,6 +65,7 @@ app.use("/stores", storesRoutes);
 app.use("/users", usersRoute);
 app.use("/products", productsRoute);
 app.use("/cart", cartRoute);
+app.use("/order", orderRoute);
 
 // if route not found upper go to this route and this error will go to the next middleware of error
 app.use("*", (req, res, next) => {

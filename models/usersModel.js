@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "you should write your number"],
   },
+  photo: {
+    type: String,
+    default: "userDefault.png"
+  },
   location: {
     type: String,
     required: [true, "you should write your location"],

@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 
-
+  
 // sendEmail function
      // opt will equal to = {email, subject, text}
 const sendEmail = async opt => {

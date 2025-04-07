@@ -40,7 +40,7 @@ router
 // update me (only name or email)
 router
   .route("/updateMe")
-  .patch( userController.updateMe);
+  .patch( userController.uploadUserPhoto,userController.resizeUserPhoto,userController.updateMe);
 
 // make nested route of user
 // router.use('/:tourUser/cart', cart);
