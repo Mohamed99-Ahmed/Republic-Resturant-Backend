@@ -57,6 +57,7 @@ exports.createOrderCheckout = catchAsync(async (req, res, next) => {
     return next(new ApiError("you should user and have cart ", 400));
   // Set the paid field to true
   await Order.create({ cart, user, price, paid: true }); // create order in database
+  await Cart.deleteMany({user:req.user.id})
 
   res.redirect(req.originalUrl.split("?")[0]); // redirest to orginal url in success_url
 });
