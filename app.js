@@ -18,12 +18,13 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const hpp = require("hpp");
+const path = require("path");
 // حول Express إلى دالة Serverless حتى يعمل على Vercel
 
 // Middle wares
 let date;
 app.use(express.json()); // read json data from body
-
+app.use('/public', express.static(path.join(__dirname, 'public'))); // serve static files from public folder
 
 // Enable CORS for all routes get and post api
 app.use(cors());
