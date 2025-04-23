@@ -18,14 +18,15 @@ exports.getCart = catchAsync(async (req, res, next) => {
 
 // Add products to cart or, if him not have cart make new cart
 exports.addToCart = catchAsync(async (req, res, next) => {
-  const productId = req.params.idProduct;
-  const quantity = req.params.quantity;
+  const { size, choice, quantity, productId, description } = req.body; // Assuming size is passed in the request body
   // find the cart that relate to user
   let cart = await Cart.findOne({ user: req.user.id });
 
   // If no cart exists, create a new one
   if (!cart) {
-    cart = new Cart({ user: req.user.id, items: [] });
+    cart = new Cart({ user: req.user.id, items: [], description });
+  }else{
+    cart.description = description; // Update description if needed
   }
 
   // Find the existing product in the cart
@@ -34,9 +35,10 @@ exports.addToCart = catchAsync(async (req, res, next) => {
   );
 
   if (existingItem) {
-    console.log("existingItem", existingItem);
     // Update the quantity dynamically
     existingItem.quantity = quantity;
+    existingItem.size = size; // Update size if needed
+    existingItem.choice = choice; // Update choice if needed
     if (existingItem.quantity <= 0) {
       // Remove item if quantity is 0 or less
       cart.items = cart.items.filter(
@@ -47,7 +49,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
     // Add new item only if quantity is positive
     // console.log(cart.items)
     if (quantity > 0) {
-      cart.items.push({ product: productId, quantity });
+      cart.items.push({ product: productId, quantity, size, choice });
     }
   }
 
@@ -63,7 +65,7 @@ exports.addToCart = catchAsync(async (req, res, next) => {
 
 // remove product form cart
 exports.removeFromCart = catchAsync(async (req, res, next) => {
-  const  productId  = req.params.idProduct;
+  const productId = req.params.idProduct;
   let cart = await Cart.findOne({ user: req.user.id });
   // make error if cart not found
   if (!cart) return next(new ApiError("id of product is not correct", 404));
@@ -97,4 +99,4 @@ exports.clearCart = catchAsync(async (req, res, next) => {
 });
 
 //  (get carts / removee  cart ) access to adimin
-exports.getAllCarts = factory.getAll(Cart)
+exports.getAllCarts = factory.getAll(Cart);

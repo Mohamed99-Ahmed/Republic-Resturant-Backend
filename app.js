@@ -22,7 +22,8 @@ const hpp = require("hpp");
 
 // Middle wares
 let date;
-app.use(express.json());
+app.use(express.json()); // read json data from body
+
 
 // Enable CORS for all routes get and post api
 app.use(cors());
@@ -35,12 +36,12 @@ app.get("/", (req, res) => {
 
 // security package
 // 1) rateLimit ( limit the maxiumum of request for api)
-const rateLimiter = rateLimit({
-  max: 100, // maxiumum of request
-  windowMs: 60 * 60 * 1000, // message error will appear for 1 hour because maxium request if happend
-  message: `'Too many requests from this IP, please try again in an hour!`,
-});
-app.use("/users", rateLimiter); // middleware that reteLimiter work in it
+//! const rateLimiter = rateLimit({
+//   max: 100, // maxiumum of request
+//   windowMs: 60 * 60 * 1000, // message error will appear for 1 hour because maxium request if happend
+//   message: `'Too many requests from this IP, please try again in an hour!`,
+// });
+//! app.use("/users", rateLimiter); // middleware that reteLimiter work in it
 // 2)  helmet (secure by setting HTTP)
 app.use(helmet()); // for all routes
 // 3) xxs-clean(secure against nosql => Sanitize untrusted HTML that in req.body)
@@ -50,7 +51,7 @@ app.use(mongoSanitize());
 // 4) hpp (remove duplicate query in request and take the last on only that you want make error if you dublicate  )
 app.use(
   hpp({
-    whitelist: ["sort"], // will make error if you put on of them dublicate
+    whitelist: ["sort"], // will make error if you put on of them dublicate like old way
   })
 );
 // Add CreatedAt middleware

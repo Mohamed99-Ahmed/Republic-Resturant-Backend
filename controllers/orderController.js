@@ -20,10 +20,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
     // information about session
     payment_method_types: ["card"],
     mode: "payment",
-    success_url: `${req.protocol}://${req.get("host")}/order/?cart=${
-      req.params.cartId
-    }&user=${req.user.id}&price=${cart.totalPrice}`, // if success make this success link that i will use it to go it and make order in database
-    cancel_url: `${req.protocol}://${req.get("host")}/cart`, // if not success (cancel order)
+    success_url: `https://backend-three-nu-89.vercel.app/order?cart=${req.params.cartId}&user=${req.user.id}&price=${cart.totalPrice}`, // if success make this success link that i will use it to go it and make order in database
+    cancel_url: `${req.headers.origin}/cart`, // if not success (cancel order) // ${req.headers.origin}/cart
     customer_email: req.user.email, // cusotomer that make order
     client_reference_id: req.params.cartId,
     line_items: [
@@ -39,6 +37,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       },
     ],
   });
+  console.log("session", session);
   // 3) Create session as response
   res.status(200).json({
     status: "success",
@@ -50,21 +49,19 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 exports.createOrderCheckout = catchAsync(async (req, res, next) => {
   // This is only TEMPORARY, because it's UNSECURE: everyone can make bookings without paying
   const { cart, user, price } = req.query; // take cart user price form query when success url
-  console.log("cart", cart);
-  console.log("user", user);
-  console.log("price", price);
   if (!cart && !user && !price)
     return next(new ApiError("you should user and have cart ", 400));
   // Set the paid field to true
-  await Order.create({ cart, user, price, paid: true }); // create order in database
-  await Cart.deleteMany({user:req.user.id})
-
-  res.redirect(req.originalUrl.split("?")[0]); // redirest to orginal url in success_url
+  const order = await Order.create({ cart, user, price, paid: true }); // create order in database
+  // make cartItems to cart in order
+  // await Cart.deleteOne({ user: user });   /// i delete in orderModel
+  // it will change with frontend link when success
+  res.redirect(`http://localhost:3000/orders`); // redirest to orginal url in success_url
 });
 
 // getCart
 exports.getMyOrders = catchAsync(async (req, res, next) => {
-  const order = await Order.findOne({ user: req.user.id });
+  const order = await Order.find({ user: req.user.id });
   if (!order) return next(new ApiError("you do not have orders", 404));
   res.status(200).json({
     status: httpStataus.SUCCESS,
@@ -73,7 +70,15 @@ exports.getMyOrders = catchAsync(async (req, res, next) => {
     },
   });
 });
-
+// createOrder in database and add delte function to delete cart
+exports.deletUserCart = catchAsync(async (req, res, next) => {
+  // Find the cart that relates to the user
+  const cart = await Cart.findOne({ user: this.user }).select("-id");
+  // i want take copy from cart not the same
+  this.cartCopy = JSON.parse(JSON.stringify(cart)); // Assign cart items to order
+  await Cart.deleteOne({ user: this.user }); // Delete the cart after creating the order
+  next();
+});
 exports.createOrder = factory.createOne(Order);
 
 // these Routes are authorize

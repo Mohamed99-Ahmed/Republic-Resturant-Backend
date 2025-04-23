@@ -12,16 +12,55 @@ const itemSchema = mongoose.Schema(
       required: true,
       default: 1,
     },
+    size: {
+      type: String,
+      enum: ["single", "double", "normal"],
+      default: "normal",
+    },
+    choice: {
+      type: String,
+      default: "regualr",
+      enum: ["regualr", "spicy"],
+    },
+    itemTotal: {
+      type: Number,
+      default: 0,
+    },
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
-itemSchema.virtual("itemTotal").get(function () {
-  const price = this.product?.price?.single ?? this.product?.price;
-
-  if (!price) return 0;
-
-  return this.quantity * price;
+itemSchema.pre("save", async function (next) {
+  // Now populate 'product' directly in the parent cartSchema
+  // if (!this.product) {
+  //   return next(); // No product, skip population logic
+  // }
+  if (this.isNew) {
+    this.product = await mongoose
+      .model("Product")
+      .findById(this.product)
+      .select("-__v -createdAt ");
+  }
+  // Price
+  if (this.product && this.product.price) {
+    const price = this.product.price;
+    if (this.size === "single") {
+      this.itemTotal = this.quantity * price.single;
+    } else if (this.size === "double") {
+      this.itemTotal = this.quantity * price.double;
+    } else if (this.size === "normal") {
+      this.itemTotal = this.quantity * price;
+    }
+  }
+  next();
 });
+
+// itemSchema.virtual("itemTotal").get(function () {
+//   const price = this.product?.price?.single ?? this.product?.price;
+
+//   if (!price) return 0;
+
+//   return this.quantity * price;
+// });
 // cartSchema
 const cartSchema = new mongoose.Schema(
   {
@@ -32,6 +71,10 @@ const cartSchema = new mongoose.Schema(
       unique: true, // Ensures one cart per user
     },
     items: [itemSchema],
+    description: {
+      type: String,
+      default:"",
+    },
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );

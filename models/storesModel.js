@@ -17,7 +17,6 @@ const sotoreSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Link of location is requierd"],
-    unique: true
   },
   createdAt: {
     type: Date,

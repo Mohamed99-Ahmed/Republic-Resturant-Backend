@@ -8,9 +8,10 @@ router
   // only form user
   .route("/")
   .get(cartController.getCart)
-  .delete(cartController.clearCart);
+  .delete(cartController.clearCart)
+  .post(cartController.addToCart);
 router.route("/:idProduct").delete(cartController.removeFromCart);
-router.route("/:idProduct/:quantity").post(cartController.addToCart);
+
 // for admin
 router
   .route("/allCarts")

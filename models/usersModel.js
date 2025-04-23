@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema({
 });
 // before save and create make hasing on password
 userSchema.pre("save", async function (next) {
-  // if not update user next to next middleware
+  // if not create user next to next middleware
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);
   // not send to database only on validation when create
@@ -67,7 +67,7 @@ userSchema.pre("save", async function (next) {
 });
 // changePasswordAt change if password change
 userSchema.pre("save", async function (next) {
-  // if not update password or user is new   next to next middleware
+  // if not create password or user is new   next to next middleware
   if (!this.isModified("password") || this.isNew) return next();
   // if passwordChanged
   this.passwordChangedAt = Date.now() - 1000;

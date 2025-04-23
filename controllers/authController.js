@@ -139,7 +139,7 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
     return next(new ApiError("there is no user with this email address", 404));
   }
   // generate random resetToken with no validate before save becase many of input require like (pass,...)
-  const resetToken = user.createPasswordResetToken();
+  const resetToken = user.createPasswordResetToken(); // this function that create token and save it in database
   await user.save({ validateBeforeSave: false });
 
   // send it to email

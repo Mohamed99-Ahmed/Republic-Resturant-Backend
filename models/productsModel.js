@@ -31,6 +31,7 @@ const productSchema = new mongoose.Schema(
       ref: "Category", // reference to Category Model
       required: [true, "you should write categoryDetails filed"],
     },
+
   },
   {
     toJSON: { virtuals: true },
