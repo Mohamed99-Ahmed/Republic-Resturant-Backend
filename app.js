@@ -24,7 +24,8 @@ const path = require("path");
 // Middle wares
 let date;
 app.use(express.json()); // read json data from body
-app.use('/public', express.static(path.join(__dirname, 'public'))); // serve static files from public folder
+app.use("/public", express.static(path.join(__dirname, "public"))); // serve static files from public folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // serve static files from public folder
 
 // Enable CORS for all routes get and post api
 app.use(cors());

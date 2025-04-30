@@ -4,7 +4,10 @@ const multer = require("multer");
 const catchAsync = require("../utils/catchAsync");
 const ApiError = require("../utils/apiError");
 const httpStataus = require("../utils/httpStatusText");
-const sharp = require("sharp");
+// const sharp = require("sharp");
+const imagekit = require("../utils/imagekit");
+const streamifier = require("streamifier"); // لتحويل Buffer إلى Stream
+
 // get All products
 exports.getAllProducts = factory.getAll(Product);
 // get specefic products
@@ -27,12 +30,38 @@ const upload = multer({
 exports.uploadProductImage = upload.single("imageCover"); // field name in form is imageCover
 exports.resizeProductPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next(); // if no file in request so go to next middleware
-  req.file.filename = `product-${req.user.id}-${Date.now()}.jpeg`;
-  await sharp(req.file.buffer)
-    .toFormat("jpeg")
-    .jpeg({ quality: 90 }) // the quality of image that i want
-    .toFile(`public/imgs/products/${req.file.filename}`); // the place of imgs of user that i want to save it
-  next();
+
+  const fileBufferStream = streamifier.createReadStream(req.file.buffer);
+
+  let bufferData = [];
+  fileBufferStream.on("data", (chunk) => {
+    bufferData.push(chunk);
+  });
+
+  fileBufferStream.on("end", async () => {
+    const finalBuffer = Buffer.concat(bufferData);
+
+    try {
+      const response = await imagekit.upload({
+        file: finalBuffer.toString("base64"), // لازم يكون base64
+        fileName: `product-${req.user.id}-${Date.now()}.jpeg`,
+        folder: "/RebublicImgs/uploads/products", // optional, specify the folder name in ImageKit
+      });
+
+      req.file.filename = response.url; // نحط رابط الصورة عشان نحفظه مع المنتج
+      next();
+    } catch (error) {
+      console.error(error);
+      return next(new ApiError("ImageKit Upload Error", 500));
+    }
+  });
+
+  // req.file.filename = `product-${req.user.id}-${Date.now()}.jpeg`;
+  // await sharp(req.file.buffer)
+  //   .toFormat("jpeg")
+  //   .jpeg({ quality: 90 }) // the quality of image that i want
+  //   .toFile(`public/imgs/products/${req.file.filename}`); // the place of imgs of user that i want to save it
+  // next();
 });
 
 exports.updateSpeceficProduct = catchAsync(async (req, res, next) => {

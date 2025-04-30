@@ -30,8 +30,9 @@ exports.addToCart = catchAsync(async (req, res, next) => {
   }
 
   // Find the existing product in the cart
-  const existingItem = cart.items.find(
-    (item) => item.product._id.toString() === productId.toString()
+
+  const  existingItem = cart.items.find(
+    (item) => item.product._id.toString() === productId.toString() && item.size === size && item.choice === choice
   );
 
   if (existingItem) {
