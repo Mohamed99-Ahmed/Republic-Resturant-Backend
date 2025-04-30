@@ -56,7 +56,7 @@ exports.createOrderCheckout = catchAsync(async (req, res, next) => {
   // make cartItems to cart in order
   // await Cart.deleteOne({ user: user });   /// i delete in orderModel
   // it will change with frontend link when success
-  res.redirect(`http://localhost:3000/orders`); // redirest to orginal url in success_url
+  res.redirect(`https://republic-front.vercel.app/orders`); // redirest to orginal url in success_url
 });
 
 // getCart

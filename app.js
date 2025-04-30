@@ -45,11 +45,11 @@ app.get("/", (req, res) => {
 // });
 //! app.use("/users", rateLimiter); // middleware that reteLimiter work in it
 // 2)  helmet (secure by setting HTTP)
-app.use(helmet()); // for all routes
+// app.use(helmet()); // for all routes
 // 3) xxs-clean(secure against nosql => Sanitize untrusted HTML that in req.body)
 // express-mongo-sanitize ( secure agaist coding hack in req.body => sanitze coding hack in req.body)
-app.use(xss()); // for all routes
-app.use(mongoSanitize());
+// app.use(xss()); // for all routes
+// app.use(mongoSanitize());
 // 4) hpp (remove duplicate query in request and take the last on only that you want make error if you dublicate  )
 app.use(
   hpp({

@@ -25,14 +25,31 @@ exports.addToCart = catchAsync(async (req, res, next) => {
   // If no cart exists, create a new one
   if (!cart) {
     cart = new Cart({ user: req.user.id, items: [], description });
-  }else{
-    cart.description = description; // Update description if needed
+  }else if (cart.description !== description) {
+    return cart.description = description; // Update description if needed
+
   }
+
 
   // Find the existing product in the cart
 
   const  existingItem = cart.items.find(
-    (item) => item.product._id.toString() === productId.toString() && item.size === size && item.choice === choice
+    (item) => {
+      // if i wirte size and choice  so the product have (size and choice)
+      const sameProduct = item.product._id.toString() === productId.toString();
+
+      if (size && choice) {
+        return sameProduct && item.size === size && item.choice === choice;
+      }
+    
+      if (!size && choice) {
+        return sameProduct && item.choice === choice;
+      }
+    
+      // لا يوجد size ولا choice
+      return sameProduct;
+    }
+
   );
 
   if (existingItem) {
