@@ -40,7 +40,6 @@ const productSchema = new mongoose.Schema(
 );
 // population category in product
 productSchema.pre(/^find/, function (next) {
-  console.log("Populating category..."); // Debugging log
   this.populate({
     path: "category",
     select: "-products",

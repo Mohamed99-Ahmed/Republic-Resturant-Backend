@@ -40,7 +40,6 @@ orderSchema.pre("save", async function (next) {
   // i want take copy from cart not the same
   this.cartCopy = JSON.parse(JSON.stringify(cart)); // Assign cart items to order
   await Cart.deleteOne({ user: this.user }); // Delete the cart after creating the order
-  console.log("cartItems", this.cartItems);
   next();
 });
 // pre make order when every any find

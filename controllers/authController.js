@@ -185,7 +185,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     passwordResetToken: hashToken,
     passwordResetExpires: { $gt: Date.now() },
   });
-  console.log(user);
   // if token right and find user so take password and rePassword from req.body and save user
   if (!user) {
     return next(new ApiError("token is invalid or has expired", 400));
@@ -194,7 +193,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.rePassword = req.body.rePassword;
   user.passwordResetToken = undefined;
   user.passwordResetExpires = undefined;
-  console.log(user);
   await user.save(); // save the user in database
   signToken(user._id, user.name, user.role); // create new token to update token
   res.status(200).json({
@@ -207,7 +205,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 exports.updateMyPassword = catchAsync(async (req, res, next) => {
   // find user and select password to appear to compare with current password that user write
   const user = await User.findById(req.user.id).select("+password");
-  console.log("user", user);
   // compare current password that type with user with in database
   if (!(await user.correctPassword(req.body.currentPassword, user.password))) {
     return next(new ApiError("currentPassword is wrong", 401));

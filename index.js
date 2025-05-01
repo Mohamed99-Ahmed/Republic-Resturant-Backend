@@ -15,7 +15,6 @@ let DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-// console.log("Database URL:", DB);
 
 // conncet to database and error will handle by unhandledRejection funcion
 mongoose

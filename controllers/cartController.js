@@ -25,32 +25,27 @@ exports.addToCart = catchAsync(async (req, res, next) => {
   // If no cart exists, create a new one
   if (!cart) {
     cart = new Cart({ user: req.user.id, items: [], description });
-  }else if (cart.description !== description) {
-    return cart.description = description; // Update description if needed
-
+  } else if (description) {
+    cart.description = description; // Update description if needed
   }
-
 
   // Find the existing product in the cart
 
-  const  existingItem = cart.items.find(
-    (item) => {
-      // if i wirte size and choice  so the product have (size and choice)
-      const sameProduct = item.product._id.toString() === productId.toString();
+  const existingItem = cart.items.find((item) => {
+    // if i wirte size and choice  so the product have (size and choice)
+    const sameProduct = item.product._id.toString() === productId.toString();
 
-      if (size && choice) {
-        return sameProduct && item.size === size && item.choice === choice;
-      }
-    
-      if (!size && choice) {
-        return sameProduct && item.choice === choice;
-      }
-    
-      // لا يوجد size ولا choice
-      return sameProduct;
+    if (size && choice) {
+      return sameProduct && item.size === size && item.choice === choice;
     }
 
-  );
+    if (!size && choice) {
+      return sameProduct && item.choice === choice;
+    }
+
+    // لا يوجد size ولا choice
+    return sameProduct;
+  });
 
   if (existingItem) {
     // Update the quantity dynamically
@@ -65,7 +60,6 @@ exports.addToCart = catchAsync(async (req, res, next) => {
     }
   } else {
     // Add new item only if quantity is positive
-    // console.log(cart.items)
     if (quantity > 0) {
       cart.items.push({ product: productId, quantity, size, choice });
     }

@@ -66,7 +66,6 @@ exports.resizeProductPhoto = catchAsync(async (req, res, next) => {
 
 exports.updateSpeceficProduct = catchAsync(async (req, res, next) => {
   const newObj = { ...req.body };
-  console.log(newObj);
   if (req.file) newObj.imageCover = req.file.filename;
   const product = await Product.findByIdAndUpdate(req.params.id, newObj, {
     new: true,
